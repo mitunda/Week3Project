@@ -10,3 +10,6 @@
 - Run 'git clone 'https://github.com/mitunda/Week3Project.git
 - After cloning, open the project with VS Code and modify it to your liking.
 ## Link to site on GitHub
+- https://mitunda.github.io/Week3Project/
+## Contact and Support
+- for more information, corrections and clarification, reach out via peterbrian28@gmail.com
