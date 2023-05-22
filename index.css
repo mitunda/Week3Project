@@ -10,3 +10,12 @@ body{
     padding: 10 0 0 10;
     text-align: center;
 }
+.tiles{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    border-radius: 20px;
+    background-color: rgb(118, 162, 176);
+    padding: 10px;
+    height: 90%;
+}
