@@ -17,21 +17,21 @@ var startTime, intervalId;
 
 function startTimer() {
     startTime = Date.now();
-    intervalId = setInterval(updateTimer, 1000); // Update timer every second (1000 milliseconds)
-    startButton.disabled = true; // Disable the start button once the timer starts
+    intervalId = setInterval(updateTimer, 1000); 
+    startButton.disabled = true; 
   }
 
   function stopTimer() {
     clearInterval(intervalId);
-    startButton.disabled = false; // Enable the start button when the timer stops
+    startButton.disabled = false; 
   }
   function updateTimer() {
-    var elapsedTime = Math.floor((Date.now() - startTime) / 1000); // Calculate elapsed time in seconds
+    var elapsedTime = Math.floor((Date.now() - startTime) / 1000); 
 
-    // Convert elapsed time to minutes and seconds
+    
     var minutes = Math.floor(elapsedTime / 60);
     var seconds = elapsedTime % 60;
-    // Format the minutes and seconds as two digits with leading zeros if necessary
+    // made the minutes and seconds to start with zero
     var minutesString = minutes < 10 ? '0' + minutes : minutes.toString();
     var secondsString = seconds < 10 ? '0' + seconds : seconds.toString();
 
