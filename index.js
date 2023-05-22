@@ -7,12 +7,12 @@ function shuffleCards() {
       container.appendChild(cards[randomIndex]);
     }
   }
-  var startButton = document.getElementById('startButton');
+
+var startButton = document.getElementById('startButton');
 startButton.addEventListener('click', shuffleCards);
 
 var timerElement = document.getElementById('timer');
 var startButton = document.getElementById('startButton');
-var stopButton = document.getElementById('stopButton');
 var startTime, intervalId;
 
 function startTimer() {
@@ -20,11 +20,7 @@ function startTimer() {
     intervalId = setInterval(updateTimer, 1000); 
     startButton.disabled = true; 
   }
-
-  function stopTimer() {
-    clearInterval(intervalId);
-    startButton.disabled = false; 
-  }
+  
   function updateTimer() {
     var elapsedTime = Math.floor((Date.now() - startTime) / 1000); 
 
