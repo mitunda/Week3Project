@@ -9,6 +9,8 @@
 ## Setup instructions
 - Run 'git clone 'https://github.com/mitunda/Week3Project.git
 - After cloning, open the project with VS Code and modify it to your liking.
+## Bugs
+- The tiles don't have the flip effect, so it is not complete
 ## Link to site on GitHub
 - https://mitunda.github.io/Week3Project/
 ## Contact and Support

@@ -25,7 +25,19 @@ body{
     padding: 10px;
     background-color: rgb(16, 41, 96);
     text-align: center;
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
 }
+/* .fruit img{
+    backface-visibility: hidden;
+}
+.fruit{
+    transform: rotateY('180')
+} */
+
 h1{
     text-align: center;
 }

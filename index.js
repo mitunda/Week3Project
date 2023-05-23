@@ -35,3 +35,4 @@ function startTimer() {
   }
 
   startButton.addEventListener('click', startTimer);
+
