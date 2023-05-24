@@ -1,38 +1,98 @@
-function shuffleCards() {
-    var container = document.querySelector('.tiles');
-    var cards = Array.from(container.children);
-  
-    for (var i = cards.length - 1; i > 0; i--) {
-      var randomIndex = Math.floor(Math.random() * (i + 1));
-      container.appendChild(cards[randomIndex]);
+const card = document.querySelectorAll(".tiles")
+const front = document.querySelectorAll(".front")
+const container = document.querySelector('.container')
+const score = document.querySelector('.score span')
+const movesLabel = document.querySelector('.moves');
+let timerLabel = document.querySelector('.timer')
+let moves = 0;
+let seconds = 0;
+let timerId;
+
+
+
+
+
+/* created a function that reshuffles the images randomly */
+
+shuffleImage();
+clicking();
+startTimer();
+
+/*shuffling images */
+
+function shuffleImage() {
+    card.forEach(c=>{
+        const num = [...Array(card.length).keys()]
+        const random = Math.floor(Math.random()*card.length)
+
+        c.style.order = num[random]
+    })
+}
+
+function clicking(){
+
+    for(let i =0; i<card.length; i++){
+        front[i].classList.add('show')
+
+        setInterval(() => {
+            front[i].classList.remove('show')
+        }, 2000);
+
+        card[i].addEventListener('click' ,()=>{
+
+            front[i].classList.add('flip')
+           const filppedCard = document.querySelectorAll('.flip')
+
+            if(filppedCard.length == 2){
+
+                container.style.pointerEvents ='none'
+                
+                setInterval(() => {
+                    
+                    container.style.pointerEvents ='all'
+                }, 1000);
+ 
+                match(filppedCard[0] , filppedCard[1]);
+                moves++;
+                movesLabel.textContent = moves;
+            }
+        })
     }
-  }
+}
+function match(cardOne , cardTwo){
 
-var startButton = document.getElementById('startButton');
-startButton.addEventListener('click', shuffleCards);
+    if(cardOne.dataset.index == cardTwo.dataset.index){
 
-var timerElement = document.getElementById('timer');
-var startButton = document.getElementById('startButton');
-var startTime, intervalId;
+        score.innerHTML = parseInt(score.innerHTML) + 1
+       
+        cardOne.classList.remove('flip') 
+        cardTwo.classList.remove('flip') 
+        cardOne.classList.add('match')
+        cardTwo.classList.add('match')
+
+    }else{
+
+        setTimeout(() => {
+            
+            cardOne.classList.remove('flip') 
+            cardTwo.classList.remove('flip') 
+        }, 1000);
+    }
+}
 
 function startTimer() {
-    startTime = Date.now();
-    intervalId = setInterval(updateTimer, 1000); 
-    startButton.disabled = true; 
+    timerId = setInterval(() => {
+      seconds++;
+      timerLabel.textContent = formatTime(seconds);
+    }, 1000);
   }
   
-  function updateTimer() {
-    var elapsedTime = Math.floor((Date.now() - startTime) / 1000); 
-
-    
-    var minutes = Math.floor(elapsedTime / 60);
-    var seconds = elapsedTime % 60;
-    // made the minutes and seconds to start with zero
-    var minutesString = minutes < 10 ? '0' + minutes : minutes.toString();
-    var secondsString = seconds < 10 ? '0' + seconds : seconds.toString();
-
-    timerElement.textContent = minutesString + ':' + secondsString;
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${padZero(minutes)}:${padZero(remainingSeconds)}`;
   }
-
-  startButton.addEventListener('click', startTimer);
-
+  
+  function padZero(num) {
+    return num.toString().padStart(2, '0');
+  }
