@@ -11,7 +11,6 @@
 - After cloning, open the project with VS Code and modify it to your liking.
 ## Bugs
 - The timer cannot stop
-- Some tiles cannot load the image
 ## Link to site on GitHub
 - https://mitunda.github.io/Week3Project/
 ## Contact and Support
